@@ -2,3 +2,7 @@
     background-color: rgb(246, 246, 239);
     padding: 10px 30px;
 }
+
+.stories li {
+    margin-bottom: 10px;
+}

@@ -1,17 +1,31 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Stories from "./Stories";
+import Time from "./Time";
 import "./StoryList.css";
 
 export default class StoryList extends Component {
   render() {
-    const { stories } = this.props;
+    let { stories } = this.props;
     return (
       <div>
         <ol className="stories" start={1}>
-          {stories.map((story, index) => (
+          {stories.map(story => (
             <li key={story.id}>
-              <Stories stories={stories} />
+              <span className="story">
+                <h3 className="title">{story.title}</h3>
+                <div className="subtext">
+                  <span className="score">{story.score} points</span>
+                  {" by "}
+                  <span className="user">{story.by}</span>{" "}
+                  <Time time={story.time} isUnixTime={true} />
+                  {" | "}
+                  <a>flag</a>
+                  {" | "}
+                  <a>hide</a>
+                  {" | "}
+                  <a>{story.descendants} comments</a>
+                </div>
+              </span>
             </li>
           ))}
         </ol>
@@ -21,5 +35,6 @@ export default class StoryList extends Component {
 }
 
 StoryList.propTypes = {
-  stories: PropTypes.array.isRequired
+  stories: PropTypes.array.isRequired,
+  story: PropTypes.object.isRequired
 };
