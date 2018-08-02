@@ -1,17 +1,10 @@
 body {
     font-family: Verdana, Geneva, sans-serif;
-    padding: 20px;
+    padding: 0 100px;
     font-size: 14px;
 }
 
 .subtext {
     color: #777;
     font-size: 7pt;
-}
-
-h3 {
-    line-height: 1.4em;
-    font-weight: normal;
-    font-size: 10pt;
-    margin: 0;
 }

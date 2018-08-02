@@ -1,23 +1,23 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { Footer } from "./Footer";
 import Time from "./Time";
 import "./StoryList.css";
 
 export default class StoryList extends Component {
   render() {
-    let { stories } = this.props;
+    let { News } = this.props;
     return (
-      <div>
+      <div className="stories__wrapper">
         <ol className="stories" start={1}>
-          {stories.map(story => (
-            <li key={story.id}>
+          {News.map((story, index) => (
+            <li key={index}>
               <span className="story">
-                <h3 className="title">{story.title}</h3>
+                <h3 className="title"> {story.title}</h3>
                 <div className="subtext">
                   <span className="score">{story.score} points</span>
                   {" by "}
                   <span className="user">{story.by}</span>{" "}
-                  <Time time={story.time} isUnixTime={true} />
+                  <Time time={story.publishedAt} isUnixTime={false} />
                   {" | "}
                   <a>flag</a>
                   {" | "}
@@ -29,12 +29,8 @@ export default class StoryList extends Component {
             </li>
           ))}
         </ol>
+        <Footer />
       </div>
     );
   }
 }
-
-StoryList.propTypes = {
-  stories: PropTypes.array.isRequired,
-  story: PropTypes.object.isRequired
-};
